@@ -25,7 +25,7 @@ class Heap {
   heapify(array) {
     const size = array.length - 1
     if (size <= 0) {
-      return array;
+      return array
     }
     for (let i = parseInt((size - 1)/2); i >= 0; i--) {
       this.bottomUp(array, i, size)
@@ -37,13 +37,24 @@ class Heap {
     const size = array.length - 1
     array[0] = array[size]
     array.splice(size, 1)
-    this.heapify(array)
-    return element;
+    this.bottomUp(array, 0, size - 1)
+    return element
   }
 
   insert(array, element) {
     array.push(element)
     this.heapify(array)
+  }
+
+  sort(array) {
+    const arrayCloned = array.slice()
+    this.heapify(arrayCloned)
+    const size = arrayCloned.length
+    const sortedArray = []
+    for (let i = 0; i < size; i++) {
+      sortedArray[i] = this.remove(arrayCloned)
+    }
+    return sortedArray
   }
 
 }
@@ -53,7 +64,9 @@ const array = [10, 20, 5, 15, 30]
 heap.heapify(array)
 console.log('After heapify ', array)
 const element = heap.remove(array)
-console.log('Removed element ', element);
-console.log('After remove ', array);
+console.log('Removed element ', element)
+console.log('After remove ', array)
 heap.insert(array, 30)
-console.log('After addition ', array);
+console.log('After addition ', array)
+const sortedArray = heap.sort(array)
+console.log('Applying heap sort ', sortedArray);
