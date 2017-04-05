@@ -56,7 +56,7 @@ class Heap {
     for (let idx = 0; idx < this.characters.length; idx++) {
       if (this.characters[idx].char === char) {
         this.characters[idx].incrementFrequency()
-        return this.heapify(idx)
+        return this.heapify(parseInt(idx/2))
       }
     }
     return this.addCharacter(char)
@@ -74,14 +74,14 @@ class Heap {
 
   getSecondBiggest() {
     const size = this.characters.length - 1
-    if (size < 1) return undefined;
-    let left = this.characters[1] || new Character('#', -Infinity)
+    if (size < 1) return -1;
+    let left = this.characters[1]
     let right = this.characters[2] || new Character('#', -Infinity)
     let biggestIndex = 1
     if (left.frequency < right.frequency) {
       biggestIndex = 2
     }
-    if (!this.characters[biggestIndex].frequency) return undefined;
+    if (!this.characters[biggestIndex].frequency) return -1;
     const char = this.characters[biggestIndex].char
     this.characters[biggestIndex].decrementFrequency()
     this.heapify(biggestIndex)
@@ -125,7 +125,7 @@ class RearrangeCharacters {
     const output = []
     while(1) {
       const char = this.heap.getNextChar(pre)
-      if (char === undefined) {
+      if (char === -1) {
         return 'Not a valid string';
       } else if (char == null) {
         break
@@ -138,6 +138,6 @@ class RearrangeCharacters {
 }
 
 const rearrangeCharacters = new RearrangeCharacters()
-rearrangeCharacters.initialize('aaacabbbbb'.split(''))
+rearrangeCharacters.initialize('aaaaaabbbbbb'.split(''))
 const output = rearrangeCharacters.rearrage()
 console.log(output);
