@@ -57,12 +57,29 @@ class Heap {
     return sortedArray
   }
 
+  checkHeap(array, index = 0) {
+    if (!array[index]) return true;
+    return (
+      array[index] > (array[2 * index + 1] || -Infinity) &&
+      array[index] > (array[2 * index + 2] || -Infinity) &&
+      this.checkHeap(array, 2 * index + 1) &&
+      this.checkHeap(array, 2 * index + 2)
+    );
+  }
+
+  isHeap(array) {
+    console.log(1);
+    if (this.checkHeap(array)) {
+      return 'Yes';
+    }
+    return 'No';
+  }
+
 }
 
 const heap = new Heap()
 const array = [10, 20, 5, 15, 30]
 heap.heapify(array)
-console.log('After heapify ', array)
 const element = heap.remove(array)
 console.log('Removed element ', element)
 console.log('After remove ', array)
@@ -70,3 +87,4 @@ heap.insert(array, 30)
 console.log('After addition ', array)
 const sortedArray = heap.sort(array)
 console.log('Applying heap sort ', sortedArray);
+console.log(heap.isHeap(array));
