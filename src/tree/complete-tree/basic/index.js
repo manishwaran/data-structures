@@ -1,4 +1,4 @@
-export default class Node {
+class Node {
   constructor(data) {
     this.data = data
     this.left = null
@@ -53,10 +53,4 @@ class CompleteTree {
   }
 }
 
-const completeTree = new CompleteTree()
-const input = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-input.forEach((data) => completeTree.insert(data))
-completeTree.printTree()
-
-
-// module.exports = CompleteTree;
+module.exports = CompleteTree;
