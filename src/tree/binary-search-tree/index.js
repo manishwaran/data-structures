@@ -20,6 +20,14 @@ class BST {
     return tree;
   }
 
+  printBST(dTree, level = 0) {
+    if (dTree) {
+      this.printBST(dTree.right, level + 1)
+      console.log(Array.apply(null, { length: level }).map(() => ' ').join('') + dTree.data);
+      this.printBST(dTree.left, level + 1)
+    }
+  }
+
 }
 
 module.exports = { BST, Node};

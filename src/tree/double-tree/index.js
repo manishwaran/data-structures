@@ -12,12 +12,8 @@ class DoubleTree {
     this.dTree = bst.insert(this.dTree, data)
   }
 
-  printTree(dTree = this.dTree, level = 0) {
-    if (dTree) {
-      this.printTree(dTree.right, level + 1)
-      console.log(Array.apply(null, { length: level }).map(() => ' ').join('') + dTree.data);
-      this.printTree(dTree.left, level + 1)
-    }
+  printTree(dTree = this.dTree) {
+    this.printBST(dTree)
   }
 
   constructDtree(dTree = this.dTree) {
