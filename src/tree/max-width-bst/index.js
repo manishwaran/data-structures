@@ -19,4 +19,4 @@ let tree = null
 input.forEach(data => (tree = maxWidthOfBST.insert(tree, data)))
 maxWidthOfBST.printBST(tree)
 const { value } = maxWidthOfBST.findMaxWidth(tree)
-console.log('max width of given tree: ', value);
+console.log('Max width of given tree: ', value);
