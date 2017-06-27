@@ -8,19 +8,27 @@ class Node {
 
 class BST {
 
-  insert(tree, data) {
+  constructor() {
+    this.tree = null
+  }
+
+  insert(data) {
+    this.tree = this.insertData(data, this.tree)
+  }
+
+  insertData(data, tree) {
     if (!tree) {
       return new Node(data);
     }
     if (data < tree.data) {
-      tree.left = this.insert(tree.left, data)
+      tree.left = this.insertData(data, tree.left)
     } else {
-      tree.right = this.insert(tree.right, data)
+      tree.right = this.insertData(data, tree.right)
     }
     return tree;
   }
 
-  printBST(dTree, level = 0) {
+  printBST(dTree = this.tree, level = 0) {
     if (dTree) {
       this.printBST(dTree.right, level + 1)
       console.log(Array.apply(null, { length: level }).map(() => ' ').join('') + dTree.data);
