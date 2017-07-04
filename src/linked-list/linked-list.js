@@ -23,6 +23,18 @@ class LinkedList {
     }
   }
 
+  reverse(list = this.linkedList) {
+    let revList = null;
+    while(list) {
+      let current = list
+      list = list.next
+      current.next = revList
+      revList = current
+    }
+    this.linkedList = revList
+  }
+
 }
 
-module.exports = LinkedList
+
+module.exports = { LinkedList, Node }

@@ -16,6 +16,7 @@ class Heap {
     if (rightChild <= size && array[rightChild] > array[biggestIndex]) {
       biggestIndex = rightChild
     }
+    console.log(index, biggestIndex);
     if (biggestIndex !== index) {
       this.swap(array, biggestIndex, index)
       this.bottomUp(array, biggestIndex, size)
@@ -29,6 +30,7 @@ class Heap {
     }
     for (let i = parseInt((size - 1)/2); i >= 0; i--) {
       this.bottomUp(array, i, size)
+      console.log(array);
     }
   }
 
@@ -78,13 +80,14 @@ class Heap {
 }
 
 const heap = new Heap()
-const array = [10, 20, 5, 15, 30]
+const array = [10,20,5,15,30,50,60,2,25]
+console.log(array);
 heap.heapify(array)
-const element = heap.remove(array)
-console.log('Removed element ', element)
-console.log('After remove ', array)
-heap.insert(array, 30)
-console.log('After addition ', array)
-const sortedArray = heap.sort(array)
-console.log('Applying heap sort ', sortedArray);
-console.log(heap.isHeap(array));
+// const element = heap.remove(array)
+// console.log('Removed element ', element)
+// console.log('After remove ', array)
+// heap.insert(array, 30)
+// console.log('After addition ', array)
+// const sortedArray = heap.sort(array)
+// console.log('Applying heap sort ', sortedArray);
+// console.log(heap.isHeap(array));
