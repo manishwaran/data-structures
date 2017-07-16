@@ -31,7 +31,7 @@ function main() {
     const input = [100, 50, 150, 25, 70, 125, 170, 60, 130]
     input.forEach(data => bst.insert(data))
     const result = {}
-    inorderPreSucc(bst.tree, 60, result)
+    inorderPreSucc(bst.tree, process.argv[2] || 60, result)
     console.log(result)
 }
 
